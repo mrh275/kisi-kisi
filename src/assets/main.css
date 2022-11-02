@@ -18,7 +18,7 @@ body {
     }
 
     .brand-img {
-        @apply w-10 mr-4;
+        @apply w-10;
     }
 
     .brand-link {
