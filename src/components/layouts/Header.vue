@@ -1,22 +1,22 @@
 <template>
-  <header class="header">
+  <header class="header" :class="stickyMenuBar">
     <div class="brand-wrapper">
       <a href="/" class="brand-link">
         <img src="../../assets/logo.png" alt="Logo Sekolah" class="brand-img" />
       </a>
       <a href="/" class="brand-link">SMA Negeri 1 Rawamerta</a>
-      <button type="button"><fa icon="bars" size="xl" @click="toggleMenu()" /></button>
+      <button type="button" class="toggle-menu"><fa icon="bars" size="xl" @click="toggleMenu()" /></button>
     </div>
 
-    <ul class="nav-menu" :class="showMenu">
+    <ul class="nav-menu" :class="showMenu" v-on:scroll="stickyMenu()">
       <li class="nav-list">
-        <router-link to="/" class="nav-link"><fa icon="home" size="xl" />Beranda</router-link>
+        <router-link to="/" class="nav-link"><fa icon="home" size="xl" class="menu-icon" />Beranda</router-link>
       </li>
       <li class="nav-list">
-        <router-link to="/daftar-kisi-kisi" class="nav-link"><fa icon="book" size="xl" />List Kisi-kisi</router-link>
+        <router-link to="/daftar-kisi-kisi" class="nav-link"><fa icon="book" size="xl" class="menu-icon" />List Kisi-kisi</router-link>
       </li>
       <li class="nav-list">
-        <router-link to="/download" class="nav-link"><fa icon="download" size="xl" />Unduh Kisi-kisi</router-link>
+        <router-link to="/download" class="nav-link"><fa icon="download" size="xl" class="menu-icon" />Unduh Kisi-kisi</router-link>
       </li>
     </ul>
   </header>
@@ -27,7 +27,14 @@ export default {
   data() {
     return {
       showMenu: "top-0",
+      stickyMenuBar: "relative",
     };
+  },
+  created() {
+    window.addEventListener("scroll", this.stickyMenu);
+  },
+  unmounted() {
+    window.addEventListener("scroll", this.stickyMenu);
   },
   methods: {
     toggleMenu() {
@@ -35,6 +42,15 @@ export default {
         this.showMenu = "-top-[130%]";
       } else {
         this.showMenu = "top-0";
+      }
+    },
+    stickyMenu(event) {
+      if (window.pageYOffset > 0) {
+        this.stickyMenuBar = "fixed";
+        document.querySelector("main").style.paddingTop = "104.266px";
+      } else {
+        this.stickyMenuBar = "relative";
+        document.querySelector("main").style.paddingTop = "32px";
       }
     },
   },
