@@ -10,30 +10,38 @@ body {
 
 @layer components {
     .header {
-        @apply fixed bottom-0 w-full text-white;
+        @apply fixed bottom-0 w-full text-white xl:bottom-auto xl:relative xl:flex xl:justify-between;
     }
 
     .brand-wrapper {
-        @apply relative z-20 flex items-center justify-between px-8 py-6 bg-gray-700;
+        @apply relative z-20 flex items-center justify-between px-8 py-6 bg-gray-700 xl:py-4 xl:justify-start xl:w-2/4;
     }
 
     .brand-img {
-        @apply w-10;
+        @apply w-10 xl:mr-4;
     }
 
     .brand-link {
         @apply text-xl font-bold;
     }
 
+    .toggle-menu {
+        @apply xl:hidden;
+    }
+
     .nav-menu {
-        @apply absolute z-10 flex flex-wrap items-center justify-between w-full py-6 transition-all duration-300 ease-in-out bg-gray-700 rounded-t-xl;
+        @apply absolute z-10 flex flex-wrap items-center justify-between w-full py-6 transition-all duration-300 ease-in-out bg-gray-700 xl:py-0 xl:w-2/4 rounded-t-xl xl:rounded-none xl:relative xl:justify-end xl:pr-8;
     }
 
     .nav-list {
-        @apply flex-[33%];
+        @apply flex-[33%] xl:flex-none;
     }
 
     .nav-link {
-        @apply flex flex-col items-center justify-center px-2 py-2 mb-4 hover:text-[#0099ff];
+        @apply flex flex-col items-center justify-center px-2 py-2 mb-4 xl:mb-0 hover:text-[#0099ff];
+    }
+
+    .menu-icon {
+        @apply hidden
     }
 }
