@@ -2,15 +2,16 @@
 
 <template>
   <main class="px-6 py-8 text-white bg-gray-800">
-    <div class="greetings-wrapper">
-      <h1 class="text-4xl font-bold">Selamat Datang!</h1>
-      <h1 class="text-3xl font-bold">Selamat Belajar sebelum PAS!</h1>
-      <h1 class="text-2xl font-bold">Tahun Pelajaran 2022/2023</h1>
+    <div class="first-wrapper xl:flex xl:justify-between">
+      <div class="greetings-wrapper xl:w-1/2">
+        <h1 class="text-4xl font-bold">Selamat Datang!</h1>
+        <h1 class="text-3xl font-bold">Selamat Belajar sebelum PAS!</h1>
+        <h1 class="text-2xl font-bold">Tahun Pelajaran 2022/2023</h1>
+      </div>
+      <div class="my-8 splash-img-wrapper xl:w-1/2">
+        <img src="../assets/study.svg" alt="Studying" />
+      </div>
     </div>
-    <div class="my-8 splash-img-wrapper">
-      <img src="../assets/study.svg" alt="Studying" />
-    </div>
-    <hr class="my-8 opacity-60" />
     <div class="text-center list-kisi">
       <h3 class="mb-6 text-xl font-semibold text-center list-kisi-title">
         Daftar Kisi-Kisi <br />
