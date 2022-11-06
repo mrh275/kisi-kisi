@@ -3,7 +3,7 @@
 <template>
   <main class="px-6 py-8 text-white bg-gray-800">
     <div class="first-wrapper xl:flex xl:justify-between xl:mb-6">
-      <div class="py-12 greetings-wrapper xl:w-1/2">
+      <div class="py-6 xl:py-12 greetings-wrapper xl:w-1/2">
         <h1 class="text-4xl font-bold xl:text-5xl">Selamat Datang!</h1>
         <h1 class="text-3xl font-bold xl:text-4xl">Selamat Belajar sebelum PAS!</h1>
         <h1 class="text-2xl font-bold xl:text-3xl">Tahun Pelajaran 2022/2023</h1>
@@ -18,7 +18,7 @@
         Mata Pelajaran
       </h3>
       <p class="text-justify xl:text-center xl:text-xl list-kisi-desc">Untuk melihat daftar kisi-kisi mata pelajaran apa saja yang sudah tersedia, silahkan klik tombol dibawah ini!</p>
-      <a href="/daftar-kisi-kisi" class="inline-block my-6 bg-[#0099ff] rounded-lg px-4 py-3 list-kisi-cta btn btn-primary">Daftar Kisi-kisi</a>
+      <a href="/daftar-kisi-kisi" class="inline-block my-6 bg-[#0099ff] hover:bg-[#0077ff] rounded-lg px-4 py-3 list-kisi-cta btn btn-primary">Daftar Kisi-kisi</a>
     </div>
   </main>
 </template>
