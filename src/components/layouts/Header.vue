@@ -27,11 +27,14 @@ export default {
   data() {
     return {
       showMenu: "top-0",
-      stickyMenuBar: "relative",
+      stickyMenuBar: "",
     };
   },
-  created() {
+  mounted() {
     window.addEventListener("scroll", this.stickyMenu);
+    if (window.innerWidth > 991) {
+      this.stickyMenuBar = relative;
+    }
   },
   unmounted() {
     window.addEventListener("scroll", this.stickyMenu);
@@ -45,12 +48,14 @@ export default {
       }
     },
     stickyMenu(event) {
-      if (window.pageYOffset > 0) {
-        this.stickyMenuBar = "fixed";
-        document.querySelector("main").style.paddingTop = "104.266px";
-      } else {
-        this.stickyMenuBar = "relative";
-        document.querySelector("main").style.paddingTop = "32px";
+      if (window.innerWidth > 991) {
+        if (window.pageYOffset > 0) {
+          this.stickyMenuBar = "fixed";
+          document.querySelector("main").style.paddingTop = "104.266px";
+        } else {
+          this.stickyMenuBar = "relative";
+          document.querySelector("main").style.paddingTop = "32px";
+        }
       }
     },
   },
