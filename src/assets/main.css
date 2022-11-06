@@ -42,6 +42,6 @@ body {
     }
 
     .menu-icon {
-        @apply xl:hidden
+        @apply xl:hidden;
     }
 }
