@@ -258,6 +258,37 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-2.6.21.tgz"
   "version" "2.6.21"
 
+"datatables.net-bs5@^1.13.0":
+  "integrity" "sha512-F1AHTQoIBpK/krJYRL6Ys2oHfnOH66SwMdSJ2BP4W40Dn2/yo3HWGhZfuf3zwZ4VMO9WYC8U5MKpjnVycZN3Bg=="
+  "resolved" "https://registry.npmjs.org/datatables.net-bs5/-/datatables.net-bs5-1.13.0.tgz"
+  "version" "1.13.0"
+  dependencies:
+    "datatables.net" ">=1.12.1"
+    "jquery" ">=1.7"
+
+"datatables.net-select@^1.5.0":
+  "integrity" "sha512-PVYcX5phmu77r3a6miTyS1zF03cgX7Mx+BXH4wCJzZW+UHe2Xz9DAHgxvLQfE7j2M8LG45Ww7RxBhnkFKk1t7A=="
+  "resolved" "https://registry.npmjs.org/datatables.net-select/-/datatables.net-select-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "datatables.net" ">=1.12.1"
+    "jquery" ">=1.7"
+
+"datatables.net-vue3@^1.0.0":
+  "integrity" "sha512-QvIQEMZCHX3u3iwTTzY6JA8wT6kFqA3C6L40Y534mSQwonXG4n2/HeBdgfCQrRFQ4Y2TGRJknkEa4md5lvMtGg=="
+  "resolved" "https://registry.npmjs.org/datatables.net-vue3/-/datatables.net-vue3-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "datatables.net" "^1.12.1"
+    "jquery" "^3.6.0"
+
+"datatables.net@^1.12.1", "datatables.net@>=1.12.1":
+  "integrity" "sha512-iEX2ialHAM2ow0LVPqexQby4eUWF2/ysyLvDhLEFe/729PtLbvlYf0RkSGJBqOpAo+FHZ+WFtw1P47UwWrEGSA=="
+  "resolved" "https://registry.npmjs.org/datatables.net/-/datatables.net-1.13.0.tgz"
+  "version" "1.13.0"
+  dependencies:
+    "jquery" ">=1.7"
+
 "defined@^1.0.0":
   "integrity" "sha512-hsBd2qSVCRE+5PmNdHt1uzyrFu5d3RwmFDKzyNZMFq/EwDNJF7Ee5+D5oEKF0hU6LhtoUF1macFvOe4AskQC1Q=="
   "resolved" "https://registry.npmjs.org/defined/-/defined-1.0.1.tgz"
@@ -290,11 +321,6 @@
 "esbuild-linux-64@0.15.12":
   "integrity" "sha512-QcgCKb7zfJxqT9o5z9ZUeGH1k8N6iX1Y7VNsEi5F9+HzN1OIx7ESxtQXDN9jbeUSPiRH1n9cw6gFT3H4qbdvcA=="
   "resolved" "https://registry.npmjs.org/esbuild-linux-64/-/esbuild-linux-64-0.15.12.tgz"
-  "version" "0.15.12"
-
-"esbuild-windows-64@0.15.12":
-  "integrity" "sha512-VActO3WnWZSN//xjSfbiGOSyC+wkZtI8I4KlgrTo5oHJM6z3MZZBCuFaZHd8hzf/W9KPhF0lY8OqlmWC9HO5AA=="
-  "resolved" "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.15.12.tgz"
   "version" "0.15.12"
 
 "esbuild@^0.15.9":
@@ -428,6 +454,11 @@
   "integrity" "sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng=="
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
+
+"jquery@^3.6.0", "jquery@>=1.7":
+  "integrity" "sha512-opJeO4nCucVnsjiXOE+/PcCgYw9Gwpvs/a6B1LL/lQhwWwpbVEVYDZ1FokFr8PRc7ghYlrFPuyHuiiDNTQxmcw=="
+  "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.6.1.tgz"
+  "version" "3.6.1"
 
 "lilconfig@^2.0.5", "lilconfig@^2.0.6":
   "integrity" "sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg=="
@@ -710,7 +741,7 @@
   dependencies:
     "@vue/devtools-api" "^6.4.5"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.41", "vue@>= 3.0.0 < 4", "vue@3.2.41":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.5", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.41", "vue@>= 3.0.0 < 4", "vue@3.2.41":
   "integrity" "sha512-uuuvnrDXEeZ9VUPljgHkqB5IaVO8SxhPpqF2eWOukVrBnRBx2THPSGQBnVRt0GrIG1gvCmFXMGbd7FqcT1ixNQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.41.tgz"
   "version" "3.2.41"
@@ -720,13 +751,6 @@
     "@vue/runtime-dom" "3.2.41"
     "@vue/server-renderer" "3.2.41"
     "@vue/shared" "3.2.41"
-
-"vue3-easy-data-table@^1.5.12":
-  "integrity" "sha512-XMHXIqQSV5Yh9N1qfXtIQ+QLp1+yABFU7L/3AL1RLD/qmm33E6EY47Dc9aoDCC8AOUE1vx+dEncYlTGOcaLNLQ=="
-  "resolved" "https://registry.npmjs.org/vue3-easy-data-table/-/vue3-easy-data-table-1.5.12.tgz"
-  "version" "1.5.12"
-  dependencies:
-    "vue" "^3.2.25"
 
 "xtend@^4.0.2":
   "integrity" "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
