@@ -1,5 +1,5 @@
 <template>
-  <header class="header" :class="stickyMenuBar">
+  <header class="header-vue" :class="stickyMenuBar">
     <div class="brand-wrapper">
       <a href="/" class="brand-link">
         <img src="../../assets/logo.png" alt="Logo Sekolah" class="brand-img" />
