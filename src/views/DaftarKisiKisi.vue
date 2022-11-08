@@ -1,10 +1,27 @@
-<script lang="ts">
-import DataTable from "datatables.net-vue3";
-import DataTableBs5 from "datatables.net-bs5";
-
-DataTable.use(DataTableBs5);
-
-const columns = [{ data: "name" }, { data: "position" }, { data: "office" }, { data: "extn" }, { data: "start_date" }, { data: "salary" }];
+<script>
+import { ref } from "vue";
+const searchValue = ref();
+export default {
+  data() {
+    return {
+      headers: [
+        { text: "Mata Pelajaran", value: "mapel" },
+        { text: "Kelas", value: "kelas" },
+        { text: "Status", value: "status" },
+        { text: "Unduh", value: "unduh" },
+      ],
+      items: [
+        { mapel: "Matematika", kelas: "10 IPA", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "10 IPS", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "11 IPA", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "11 IPS", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "12 IPA", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "12 IPS", status: "Sudah Upload" },
+      ],
+      searchValue: searchValue,
+    };
+  },
+};
 </script>
 
 <template>
@@ -20,33 +37,23 @@ const columns = [{ data: "name" }, { data: "position" }, { data: "office" }, { d
 
     <!-- Table Kisi -->
     <div class="px-2 py-4 text-gray-800 bg-white rounded-lg table-wrapper">
-      <DataTable :columns="columns" ajax="/data.json" class="table table-hover table-striped" width="100%">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Extn.</th>
-            <th>Start date</th>
-            <th>Salary</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Extn.</th>
-            <th>Start date</th>
-            <th>Salary</th>
-          </tr>
-        </tfoot>
-      </DataTable>
+      <div class="mb-4 search-table-wrapper">
+        <label for="searchInput">Cari </label>
+        <input type="text" id="searchInput" class="border rounded-md outline-none focus:ring focus:ring-[#0099ff] px-2 ml-1 transition-all ease-in-out duration-200" v-model="searchValue" />
+      </div>
+      <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
+        <template #item-unduh="item">
+          <div class="unduh-wrapper">
+            <button class="btn btn-primary" @click="downloadMapel(item)">Unduh</button>
+          </div>
+        </template>
+      </easy-data-table>
     </div>
   </main>
 </template>
 
 <style>
-@import "bootstrap";
-@import "datatables.net-bs5";
+.table-mapel {
+  --easy-table-header-font-size: 1rem;
+}
 </style>
