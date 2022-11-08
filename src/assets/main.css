@@ -10,7 +10,7 @@ body {
 
 @layer components {
     .header-vue {
-        @apply fixed bottom-0 w-full text-white xl:bottom-auto xl:relative xl:flex xl:justify-between;
+        @apply fixed bottom-0 z-50 w-full text-white xl:bottom-auto xl:relative xl:flex xl:justify-between;
     }
 
     .brand-wrapper {
