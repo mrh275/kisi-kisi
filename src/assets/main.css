@@ -9,7 +9,7 @@ body {
 @tailwind utilities;
 
 @layer components {
-    .header {
+    .header-vue {
         @apply fixed bottom-0 w-full text-white xl:bottom-auto xl:relative xl:flex xl:justify-between;
     }
 
