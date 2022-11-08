@@ -1,22 +1,10 @@
-<script>
-import { ref } from "vue";
+<script lang="ts">
+import DataTable from "datatables.net-vue3";
+import DataTableBs5 from "datatables.net-bs5";
 
-const searchValue = ref();
+DataTable.use(DataTableBs5);
 
-export default {
-  data() {
-    return {
-      headers: [
-        { text: "Mata Pelajaran", value: "mapel" },
-        { text: "Kelas", value: "kelas" },
-        { text: "Status", value: "status" },
-        { text: "Unduh", value: "unduh" },
-      ],
-      items: [{ mapel: "Matematika", kelas: "10 IPA 1", status: "Terupload" }],
-      searchValue: searchValue,
-    };
-  },
-};
+const columns = [{ data: "name" }, { data: "position" }, { data: "office" }, { data: "extn" }, { data: "start_date" }, { data: "salary" }];
 </script>
 
 <template>
@@ -32,24 +20,33 @@ export default {
 
     <!-- Table Kisi -->
     <div class="px-2 py-4 text-gray-800 bg-white rounded-lg table-wrapper">
-      <div class="mb-3 search-table-wrapper">
-        <label for="search-field">Cari : </label>
-        <input type="text" id="search-field" v-model="searchValue" class="border border-gray-800 rounded-md outline-none focus:ring focus:ring-offset-0 focus:ring-[#0099ff] transition-all duration-200 ease-in-out" />
-      </div>
-      <EasyDataTable table-class-name="table-mapel" :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" :search-value="searchValue" show-index buttons-pagination empty-message="Data tidak ditemukan">
-        <template #item-unduh="item">
-          <div class="operation-wrapper">
-            <img src="./images/delete.png" class="operation-icon" @click="deleteItem(item)" />
-            <img src="./images/edit.png" class="operation-icon" @click="editItem(item)" />
-          </div>
-        </template>
-      </EasyDataTable>
+      <DataTable :columns="columns" ajax="/data.json" class="table table-hover table-striped" width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Extn.</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Extn.</th>
+            <th>Start date</th>
+            <th>Salary</th>
+          </tr>
+        </tfoot>
+      </DataTable>
     </div>
   </main>
 </template>
 
-<style scoped>
-.table-mapel {
-  --easy-table-header-font-size: 1.1rem;
-}
+<style>
+@import "bootstrap";
+@import "datatables.net-bs5";
 </style>
