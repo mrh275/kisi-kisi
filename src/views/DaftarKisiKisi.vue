@@ -1,5 +1,6 @@
 <script>
 import { ref } from "vue";
+
 const searchValue = ref();
 export default {
   data() {
@@ -11,9 +12,9 @@ export default {
         { text: "Unduh", value: "unduh" },
       ],
       items: [
-        { mapel: "Matematika", kelas: "10 IPA", status: "Sudah Upload" },
+        { mapel: "Matematika", kelas: "10 IPA", status: "Sudah Upload", unduh: "mtk-10-ipa" },
         { mapel: "Matematika", kelas: "10 IPS", status: "Sudah Upload" },
-        { mapel: "Matematika", kelas: "11 IPA", status: "Sudah Upload" },
+        { mapel: "Biologi", kelas: "11 IPA", status: "Sudah Upload", unduh: "biologi-11-ipa" },
         { mapel: "Matematika", kelas: "11 IPS", status: "Sudah Upload" },
         { mapel: "Matematika", kelas: "12 IPA", status: "Sudah Upload" },
         { mapel: "Matematika", kelas: "12 IPS", status: "Sudah Upload" },
@@ -44,7 +45,7 @@ export default {
       <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
         <template #item-unduh="item">
           <div class="unduh-wrapper">
-            <button class="btn btn-primary" @click="downloadMapel(item)">Unduh</button>
+            <a :href="`../public/modul/${item.unduh}.pdf`" download class="btn btn-primary">Unduh</a>
           </div>
         </template>
       </easy-data-table>
@@ -54,6 +55,6 @@ export default {
 
 <style>
 .table-mapel {
-  --easy-table-header-font-size: 1rem;
+  --easy-table-header-font-size: 0.8rem;
 }
 </style>
