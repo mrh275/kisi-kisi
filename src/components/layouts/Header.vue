@@ -16,7 +16,7 @@
         <router-link to="/daftar-kisi-kisi" class="nav-link"><fa icon="book" size="xl" class="menu-icon" />List Kisi-kisi</router-link>
       </li>
       <li class="nav-list">
-        <router-link to="/download" class="nav-link"><fa icon="download" size="xl" class="menu-icon" />Unduh Kisi-kisi</router-link>
+        <router-link to="/login" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Login</router-link>
       </li>
     </ul>
   </header>
