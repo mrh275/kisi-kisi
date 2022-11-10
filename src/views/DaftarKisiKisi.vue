@@ -50,7 +50,7 @@ export default {
     </div>
 
     <!-- Table Kisi -->
-    <div class="px-2 py-4 text-gray-800 bg-white rounded-lg table-wrapper">
+    <div class="px-2 py-4 text-gray-800 bg-white rounded-lg xl:px-6 xl:py-6 table-wrapper">
       <div class="mb-4 search-table-wrapper">
         <label for="searchInput">Cari </label>
         <input type="text" id="searchInput" class="border rounded-md outline-none focus:ring focus:ring-[#0099ff] px-2 ml-1 transition-all ease-in-out duration-200" v-model="searchValue" />
