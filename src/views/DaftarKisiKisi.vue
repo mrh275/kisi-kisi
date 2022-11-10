@@ -44,7 +44,7 @@ export default {
       <h2 class="text-xl font-semibold text-center kisi-title">
         Daftar Kisi-Kisi <br />
         Mata Pelajaran <br />
-        Penilaian Akhir Semester 1 (PAS) <br />
+        Penilaian Akhir Semester (PAS) Ganjil <br />
         Tahun Pelajaran 2022/2023
       </h2>
     </div>
