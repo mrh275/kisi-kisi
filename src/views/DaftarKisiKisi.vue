@@ -1,8 +1,17 @@
 <script>
+import axios from "axios";
 import { ref } from "vue";
 
 const searchValue = ref();
 export default {
+  mounted: function () {
+    axios.get("http://127.0.0.1:8000/api/kisi-kisi").then((response) => {
+      this.loopDataMapel(response.data);
+    });
+    // .then((error) => {
+    //   console.log(error);
+    // });
+  },
   data() {
     return {
       headers: [
@@ -11,16 +20,20 @@ export default {
         { text: "Status", value: "status" },
         { text: "Unduh", value: "unduh" },
       ],
-      items: [
-        { mapel: "Matematika", kelas: "10 IPA", status: "Sudah Upload", unduh: "mtk-10-ipa" },
-        { mapel: "Matematika", kelas: "10 IPS", status: "Sudah Upload" },
-        { mapel: "Biologi", kelas: "11 IPA", status: "Sudah Upload", unduh: "biologi-11-ipa" },
-        { mapel: "Matematika", kelas: "11 IPS", status: "Sudah Upload" },
-        { mapel: "Matematika", kelas: "12 IPA", status: "Sudah Upload" },
-        { mapel: "Matematika", kelas: "12 IPS", status: "Sudah Upload" },
-      ],
+      items: [],
       searchValue: searchValue,
     };
+  },
+  methods: {
+    loopDataMapel(data) {
+      data.forEach((item) => {
+        if (item.status == 0) {
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, status: "Belum Upload", unduh: item.slug });
+        } else {
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, status: "Terupload", unduh: item.slug });
+        }
+      });
+    },
   },
 };
 </script>
@@ -45,7 +58,7 @@ export default {
       <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
         <template #item-unduh="item">
           <div class="unduh-wrapper">
-            <a :href="`../public/modul/${item.unduh}.pdf`" download class="btn btn-primary">Unduh</a>
+            <a :href="`/modul/${item.unduh}.pdf`" download class="btn btn-primary">Download</a>
           </div>
         </template>
       </easy-data-table>
