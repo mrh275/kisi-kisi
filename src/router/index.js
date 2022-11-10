@@ -17,7 +17,7 @@ const router = createRouter({
       component: KisiKisi,
     },
     {
-      path: "/download",
+      path: "/login",
       name: "downloadKisiKisi",
       component: DownloadKisiKisi,
     },
