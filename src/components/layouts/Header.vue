@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.stickyMenu);
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 1280) {
       this.stickyMenuBar = "relative";
     }
   },
