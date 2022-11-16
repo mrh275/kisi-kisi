@@ -1,19 +1,29 @@
 <script>
-import { useDropzone } from "vue3-dropzone";
 import axios from "axios";
 
 export default {
   name: "UploadKisiKisi",
-  setup() {
-    const url = "/api/upload-kisi-kisi";
-    const saveFilesTmp = (files) => {
-      const formData = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        formData.append("tmpFiles[]", files[i]);
-      }
-      console.log(formData.getAll("tmpFiles[]"));
+  data() {
+    return {
+      mapel: null,
+      kelas: null,
+      jurusan: null,
+      selectedFiles: null,
+    };
+  },
+  methods: {
+    sendMapel(event) {
+      event.preventDefault();
+      const data = {
+        mapel: this.mapel,
+        kelas: this.kelas + " " + this.jurusan,
+        status: 1,
+        slug: this.mapel.toLowerCase() + "-" + this.kelas.toLowerCase() + "-" + this.jurusan.toLowerCase(),
+        fileMapel: [this.selectedFiles],
+      };
+      const url = "/api/upload-kisi-kisi";
       axios
-        .post(url, formData, {
+        .post(url, data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -24,40 +34,43 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    };
-
-    function onDrop(acceptFiles, rejectReason) {
-      saveFilesTmp(acceptFiles);
-      //   console.log(rejectReason);
-    }
-
-    const { getRootProps, getInputProps, ...rest } = useDropzone({ onDrop });
-
-    return {
-      getRootProps,
-      getInputProps,
-      ...rest,
-    };
+    },
+    onSelectedFile(event) {
+      this.selectedFiles = event.target.files[0];
+    },
   },
 };
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full">
-    <label
-      v-bind="getRootProps()"
-      for="dropzone-file"
-      class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-    >
-      <div class="flex flex-col items-center justify-center pt-5 pb-6">
-        <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-        </svg>
-        <p v-if="isDragActive" class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Drop the files here...</span></p>
-        <p v-else class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-        <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+  <main class="px-6 py-8 text-white bg-gray-800">
+    <form action="" method="post" enctype="multipart/form-data">
+      <div class="mb-6">
+        <label for="mapel" class="block mb-2 text-sm font-medium text-white">Mata Pelajaran</label>
+        <input type="text" v-model="mapel" id="mapel" name="mapel" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white" />
       </div>
-      <input id="dropzone-file" type="file" class="hidden" v-bind="getInputProps()" />
-    </label>
-  </div>
+      <div class="mb-6">
+        <label for="kelas" class="block mb-2 text-sm font-medium text-white">Kelas</label>
+        <input type="text" id="kelas" v-model="kelas" name="kelas" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white" />
+      </div>
+      <div class="mb-6">
+        <label for="jurusan" class="block mb-2 text-sm font-medium text-white">Jurusan</label>
+        <input type="text" id="jurusan" v-model="jurusan" name="jurusan" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white" />
+      </div>
+      <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-white" for="file_input">Upload file</label>
+        <input
+          class="block w-full text-sm text-gray-400 placeholder-gray-400 bg-gray-700 border border-gray-600 rounded-lg cursor-pointer focus:outline-none"
+          name="fileMapel"
+          aria-describedby="file_input_help"
+          id="file_input"
+          type="file"
+          @change="onSelectedFile"
+        />
+        <p class="mt-1 text-sm text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+      </div>
+
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none" @click="sendMapel">Simpan</button>
+    </form>
+  </main>
 </template>
