@@ -44,6 +44,10 @@ export default {
 
 <template>
   <main class="px-6 py-8 text-white bg-gray-800">
+    <div class="mb-6 text-xl font-semibold text-center upload-kisi-wrapper xl:text-3xl">
+      <h2 class="upload-kisi-title">Form Upload Kisi-kisi</h2>
+      <h2 class="upload-kisi-title">Mata Pelajaran</h2>
+    </div>
     <form action="" method="post" enctype="multipart/form-data">
       <div class="mb-6">
         <label for="mapel" class="block mb-2 text-sm font-medium text-white">Mata Pelajaran</label>
