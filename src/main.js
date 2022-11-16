@@ -9,7 +9,10 @@ import router from "./router";
 import "./assets/main.css";
 import Vue3EasyDataTable from "vue3-easy-data-table";
 import "vue3-easy-data-table/dist/style.css";
+import axios from "axios";
 
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:8000/";
 library.add(faHome, faBook, faBars, faDownload, faSignIn);
 const app = createApp(App);
 
