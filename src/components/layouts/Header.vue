@@ -22,13 +22,15 @@
         <router-link to="/login" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Login</router-link>
       </li>
       <li class="nav-list" v-else>
-        <router-link to="/logout" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Logout</router-link>
+        <a href="/logout" @click="logout" class="nav-link"><fa icon="sign-out" size="xl" class="menu-icon" />Logout</a>
       </li>
     </ul>
   </header>
 </template>
 
 <script>
+import { useRouter } from "vue-router";
+
 export default {
   data() {
     return {
@@ -64,6 +66,13 @@ export default {
           document.querySelector("main").style.paddingTop = "32px";
         }
       }
+    },
+    logout(e) {
+      e.preventDefault();
+      const router = useRouter();
+      sessionStorage.removeItem("token");
+      sessionStorage.clear();
+      window.location.href = "/login";
     },
   },
 };
