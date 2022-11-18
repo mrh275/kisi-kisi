@@ -18,8 +18,11 @@
       <li class="nav-list">
         <router-link to="/upload-kisi-kisi" class="nav-link"><fa icon="upload" size="xl" class="menu-icon" />Upload</router-link>
       </li>
-      <li class="nav-list">
+      <li class="nav-list" v-if="!token">
         <router-link to="/login" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Login</router-link>
+      </li>
+      <li class="nav-list" v-else>
+        <router-link to="/logout" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Logout</router-link>
       </li>
     </ul>
   </header>
@@ -31,6 +34,7 @@ export default {
     return {
       showMenu: "top-0",
       stickyMenuBar: "",
+      token: sessionStorage.token,
     };
   },
   mounted() {
