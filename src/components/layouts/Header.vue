@@ -82,7 +82,7 @@ export default {
           },
         })
         .then((response) => {
-          window.location.href = "/login";
+          window.location.href = "/";
         })
         .catch((error) => {
           console.log(error);
