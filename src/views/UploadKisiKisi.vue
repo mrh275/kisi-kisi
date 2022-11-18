@@ -17,6 +17,7 @@ export default {
       kelasError: null,
       jurusanError: null,
       fileErrors: null,
+      token: sessionStorage.token,
     };
   },
   methods: {
@@ -50,7 +51,7 @@ export default {
         .post(url, data, {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer 1|eqdT8GerZjKC3wvqW780iUJ2qscJNbhU6PQIQShH`,
+            Authorization: `Bearer ${this.token}`,
           },
         })
         .then((response) => {
