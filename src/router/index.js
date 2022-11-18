@@ -32,7 +32,7 @@ const router = createRouter({
 
 const isAuthenticated = false;
 router.beforeEach((to, from, next) => {
-  if (to.name !== "login" && !sessionStorage.token) next({ name: "login" });
+  if (to.name == "uploadKisiKisi" && !sessionStorage.token) next({ name: "login" });
   if (to.name == "login" && sessionStorage.token) next({ name: "home" });
   else next();
 });
