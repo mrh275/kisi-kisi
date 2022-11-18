@@ -101,8 +101,8 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response.data.data.accessToken);
           sessionStorage.setItem("token", response.data.data.accessToken);
+          window.location.href = "/";
         })
         .catch((error) => console.log(error));
     },
