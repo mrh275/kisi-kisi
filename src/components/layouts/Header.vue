@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { useRouter } from "vue-router";
 
 export default {
@@ -69,10 +70,24 @@ export default {
     },
     logout(e) {
       e.preventDefault();
-      const router = useRouter();
+      const url = "/api/logout";
+      const token = sessionStorage.token;
       sessionStorage.removeItem("token");
       sessionStorage.clear();
-      window.location.href = "/login";
+
+      axios
+        .get(url, {
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          window.location.href = "/login";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
