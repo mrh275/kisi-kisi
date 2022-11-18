@@ -1,16 +1,16 @@
 <template>
   <header class="header-vue" :class="stickyMenuBar">
     <div class="brand-wrapper">
-      <a href="/" class="brand-link">
+      <a href="./" class="brand-link">
         <img src="../../assets/logo.png" alt="Logo Sekolah" class="brand-img" />
       </a>
-      <a href="/" class="brand-link">SMA Negeri 1 Rawamerta</a>
+      <a href="./" class="brand-link">SMA Negeri 1 Rawamerta</a>
       <button type="button" class="toggle-menu"><fa icon="bars" size="xl" @click="toggleMenu()" /></button>
     </div>
 
     <ul class="nav-menu" :class="showMenu" v-on:scroll="stickyMenu()">
       <li class="nav-list">
-        <router-link to="/" class="nav-link"><fa icon="home" size="xl" class="menu-icon" />Beranda</router-link>
+        <router-link to="./" class="nav-link"><fa icon="home" size="xl" class="menu-icon" />Beranda</router-link>
       </li>
       <li class="nav-list">
         <router-link to="/daftar-kisi-kisi" class="nav-link"><fa icon="book" size="xl" class="menu-icon" />List Kisi-kisi</router-link>
@@ -30,7 +30,6 @@
 
 <script>
 import axios from "axios";
-import { useRouter } from "vue-router";
 
 export default {
   data() {
