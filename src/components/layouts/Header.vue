@@ -16,7 +16,10 @@
         <router-link to="/daftar-kisi-kisi" class="nav-link"><fa icon="book" size="xl" class="menu-icon" />List Kisi-kisi</router-link>
       </li>
       <li class="nav-list">
-        <router-link to="/upload-kisi-kisi" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Upload</router-link>
+        <router-link to="/upload-kisi-kisi" class="nav-link"><fa icon="upload" size="xl" class="menu-icon" />Upload</router-link>
+      </li>
+      <li class="nav-list">
+        <router-link to="/login" class="nav-link"><fa icon="sign-in" size="xl" class="menu-icon" />Login</router-link>
       </li>
     </ul>
   </header>
@@ -42,7 +45,7 @@ export default {
   methods: {
     toggleMenu() {
       if (this.showMenu == "top-0") {
-        this.showMenu = "-top-[130%]";
+        this.showMenu = "-top-[200%]";
       } else {
         this.showMenu = "top-0";
       }
