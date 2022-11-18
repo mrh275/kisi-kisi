@@ -16,6 +16,7 @@
               class="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#0099ff] focus:outline-none focus:ring-0 focus:border-[#0099ff] peer"
               placeholder=" "
               name="username"
+              v-model="username"
             />
             <label
               for="floating-username"
@@ -30,6 +31,7 @@
               class="block py-2.5 px-0 w-full text-md text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#0099ff] focus:outline-none focus:ring-0 focus:border-[#0099ff] peer"
               placeholder=" "
               name="password"
+              v-model="password"
             />
             <label
               for="floating_password"
@@ -50,6 +52,7 @@
           <div class="login-button">
             <button
               type="submit"
+              @click="login"
               class="text-white bg-[#0099ff] hover:bg-[#0088ff] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-[#0099ff] dark:hover:bg-[#0099ff] focus:outline-none dark:focus:ring-[#0088ff] w-full xl:w-auto"
             >
               Login
@@ -62,6 +65,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   mounted() {
     document.title = "Login | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
@@ -69,6 +74,8 @@ export default {
   data() {
     return {
       type: "password",
+      username: null,
+      password: null,
     };
   },
   methods: {
@@ -78,6 +85,26 @@ export default {
       } else {
         this.type = "password";
       }
+    },
+    login(event) {
+      event.preventDefault();
+      const url = "/api/login";
+      const data = {
+        username: this.username,
+        password: this.password,
+      };
+
+      axios
+        .post(url, data, {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+        .then((response) => {
+          console.log(response.data.data.accessToken);
+          sessionStorage.setItem("token", response.data.data.accessToken);
+        })
+        .catch((error) => console.log(error));
     },
   },
 };
