@@ -4,6 +4,9 @@ import { createToaster } from "@meforma/vue-toaster";
 
 export default {
   name: "UploadKisiKisi",
+  mounted() {
+    document.title = "Upload Kisi-kisi | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
+  },
   data() {
     return {
       mapel: null,

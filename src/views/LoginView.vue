@@ -63,6 +63,9 @@
 
 <script>
 export default {
+  mounted() {
+    document.title = "Login | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
+  },
   data() {
     return {
       type: "password",

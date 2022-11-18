@@ -1,4 +1,10 @@
-<script></script>
+<script>
+export default {
+  mounted() {
+    document.title = "Home | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
+  },
+};
+</script>
 
 <template>
   <main class="px-6 py-8 text-white bg-gray-800">

@@ -5,12 +5,15 @@ import { ref } from "vue";
 const searchValue = ref();
 export default {
   mounted: function () {
-    axios.get("http://127.0.0.1:8000/api/kisi-kisi").then((response) => {
-      this.loopDataMapel(response.data);
-    });
-    // .then((error) => {
-    //   console.log(error);
-    // });
+    axios
+      .get("http://127.0.0.1:8000/api/kisi-kisi")
+      .then((response) => {
+        this.loopDataMapel(response.data);
+      })
+      .then((error) => {
+        console.log(error);
+      });
+    document.title = "Daftar Kisi-kisi | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
   },
   data() {
     return {
