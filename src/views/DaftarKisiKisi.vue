@@ -6,7 +6,7 @@ const searchValue = ref();
 export default {
   mounted: function () {
     axios
-      .get("http://127.0.0.1:8000/api/kisi-kisi")
+      .get("/api/kisi-kisi")
       .then((response) => {
         this.loopDataMapel(response.data);
       })

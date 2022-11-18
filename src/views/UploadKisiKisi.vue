@@ -45,12 +45,14 @@ export default {
         fileMapel: [this.selectedFiles],
       };
       const url = "/api/upload-kisi-kisi";
+      const token = sessionStorage.token;
 
       axios
         .post(url, data, {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer 1|eqdT8GerZjKC3wvqW780iUJ2qscJNbhU6PQIQShH`,
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {
