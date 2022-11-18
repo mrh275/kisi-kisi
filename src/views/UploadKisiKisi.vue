@@ -34,7 +34,7 @@ export default {
       } else {
         this.jurusanError = null;
       }
-      data = {
+      const data = {
         mapel: this.mapel,
         kelas: this.kelas + " " + this.jurusan,
         status: 1,
@@ -47,6 +47,7 @@ export default {
         .post(url, data, {
           headers: {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer 1|eqdT8GerZjKC3wvqW780iUJ2qscJNbhU6PQIQShH`,
           },
         })
         .then((response) => {
@@ -120,7 +121,7 @@ export default {
         </p>
       </div>
 
-      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none" @click="sendMapel">Simpan</button>
+      <button type="submit" class="text-white bg-[#0099ff] hover:bg-[#0099ff] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none" @click="sendMapel">Simpan</button>
     </form>
   </main>
 </template>
