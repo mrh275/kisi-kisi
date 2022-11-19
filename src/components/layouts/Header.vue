@@ -50,10 +50,18 @@ export default {
   },
   methods: {
     toggleMenu() {
-      if (this.showMenu == "top-0") {
-        this.showMenu = "-top-[200%]";
+      if (sessionStorage.token) {
+        if (this.showMenu == "top-0") {
+          this.showMenu = "-top-[200%]";
+        } else {
+          this.showMenu = "top-0";
+        }
       } else {
-        this.showMenu = "top-0";
+        if (this.showMenu == "top-0") {
+          this.showMenu = "-top-[140%]";
+        } else {
+          this.showMenu = "top-0";
+        }
       }
     },
     stickyMenu(event) {
