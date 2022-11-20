@@ -50,7 +50,7 @@ Output build akan membuat folder dengan nama `dist` dan mengenerate static file 
 
 ## Post Installation
 
-Buka file `main.js`, rubah api url menjadi api masing-masing.
+Buka file `main.js`, rubah api url menjadi api milik kalian masing-masing.
 
 ```javascript
 axios.defaults.baseURL = "API_URL";
