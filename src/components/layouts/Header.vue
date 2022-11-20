@@ -79,8 +79,6 @@ export default {
       e.preventDefault();
       const url = "/api/logout";
       const token = sessionStorage.token;
-      sessionStorage.removeItem("token");
-      sessionStorage.clear();
 
       axios
         .get(url, {
@@ -90,6 +88,8 @@ export default {
           },
         })
         .then((response) => {
+          sessionStorage.removeItem("token");
+          sessionStorage.clear();
           window.location.href = "/";
         })
         .catch((error) => {
