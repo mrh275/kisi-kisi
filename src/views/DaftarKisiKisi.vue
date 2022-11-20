@@ -10,7 +10,7 @@ export default {
       .then((response) => {
         this.loopDataMapel(response.data);
       })
-      .then((error) => {
+      .catch((error) => {
         console.log(error);
       });
     document.title = "Daftar Kisi-kisi | Bank Kisi-kisi Ujian SMAN 1 Rawamerta";
@@ -37,6 +37,28 @@ export default {
         }
       });
     },
+    downloadKisiKisi(item) {
+      const url = "/api/download-kisi-kisi";
+
+      axios
+        .get(url, {
+          params: {
+            itemName: item,
+          },
+          responseType: "arraybuffer",
+        })
+        .then(function (response) {
+          console.log(response.data);
+          const blob = new Blob([response.data], { type: "application/pdf" });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = item + ".pdf";
+          link.click();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
@@ -61,7 +83,7 @@ export default {
       <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
         <template #item-unduh="item">
           <div class="unduh-wrapper">
-            <a :href="`/modul/${item.unduh}.pdf`" download class="btn btn-primary">Download</a>
+            <button @click="downloadKisiKisi(item.unduh)" class="btn btn-primary">Download</button>
           </div>
         </template>
       </easy-data-table>
