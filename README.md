@@ -52,13 +52,13 @@ Output build akan membuat folder dengan nama `dist` dan mengenerate static file 
 
 Buka file `main.js`, rubah api url menjadi api masing-masing.
 
-    ```javascript
+    ```js
     axios.defaults.baseURL = "API_URL";
     ```
 
     contoh
 
-    ```javascript
+    ```js
     axios.defaults.baseURL = "http://api.laravel.com/api";
     ```
 
