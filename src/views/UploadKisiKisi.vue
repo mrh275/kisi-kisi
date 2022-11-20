@@ -37,11 +37,14 @@ export default {
       } else {
         this.jurusanError = null;
       }
+      const regexp = /\s/g;
+      const slugMapel = this.mapel.replaceAll(regexp, "-");
+      const slugJurusan = this.jurusan.replaceAll(regexp, "-");
       const data = {
         mapel: this.mapel,
         kelas: this.kelas + " " + this.jurusan,
         status: 1,
-        slug: this.mapel.toLowerCase() + "-" + this.kelas.toLowerCase() + "-" + this.jurusan.toLowerCase(),
+        slug: slugMapel.toLowerCase() + "-" + this.kelas.toLowerCase() + "-" + slugJurusan.toLowerCase(),
         fileMapel: [this.selectedFiles],
       };
       const url = "/api/upload-kisi-kisi";
