@@ -5,7 +5,7 @@ Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat 
 ## Aplikasi dikembangkan menggunakan teknologi
 
 1. Vue 3 (Main Front End)
-2. VueRouter (Router Management)
+2. VueRouter (Route Management)
 3. TailwindCSS (CSS Utility)
 4. FLowbite (TailwindCSS Components Plugin)
 5. Axios (HTTP Request)
