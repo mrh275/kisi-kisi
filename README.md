@@ -9,12 +9,12 @@ Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat 
 3. TailwindCSS (CSS Utility)
 4. FLowbite (TailwindCSS Components Plugin)
 5. Axios (HTTP Request)
-6. Vue3 Easy Datatable (Datatables)
+6. Vue3 Easy Datatables (Datatables)
 7. Vite (Module Build Tool)
 8. Font Awesome 6 Free Edition (Icon)
 9. Semesta API build with Laravel 9 : [semesta-api](https://github.com/muhamadramdani275/semesta-api)
 
-## Cara Penggunaan
+## Cara Install
 
 1. Buka `Terminal/CMD/Git Bash` lalu clone repository [https://github.com/muhamadramdani275/kisi-kisi.git](https://github.com/muhamadramdani275/kisi-kisi.git)
 
@@ -47,5 +47,19 @@ Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat 
    ```
 
 Output build akan membuat folder dengan nama `dist` dan mengenerate static file yang dapat dideploy ke hosting berbasis server `apache` atau `nginx`.
+
+## Post Installation
+
+Buka file `main.js`, rubah api url menjadi api masing-masing.
+
+    ```javascript
+    axios.defaults.baseURL = "API_URL";
+    ```
+
+    contoh
+
+    ```javascript
+    axios.defaults.baseURL = "http://api.laravel.com/api";
+    ```
 
 ## Made with ❤️ by Muhamad Ramdani Hidayatullah
