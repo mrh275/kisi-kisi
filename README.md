@@ -55,6 +55,5 @@ Buka file `main.js`, rubah api url menjadi api masing-masing.
     ```
     axios.defaults.baseURL = "API_URL";
     ```
-    contoh
 
 ## Made with ❤️ by Muhamad Ramdani Hidayatullah
