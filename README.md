@@ -56,4 +56,10 @@ Buka file `main.js`, rubah api url menjadi api masing-masing.
 axios.defaults.baseURL = "API_URL";
 ```
 
+contoh
+
+```javascript
+axios.defaults.baseURL = "http://api.laravel.com/api";
+```
+
 ## Made with ❤️ by Muhamad Ramdani Hidayatullah
