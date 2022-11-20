@@ -17,7 +17,29 @@ Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat 
 ## Cara Penggunaan
 
 1. Clone repository [https://github.com/muhamadramdani275/kisi-kisi.git](https://github.com/muhamadramdani275/kisi-kisi.git)
+
    ```cli
    git clone https://github.com/muhamadramdani275/kisi-kisi.git
    ```
-2.
+
+2. Lalu jalan kan `npm install`
+
+   ```cli
+   npm install
+   ```
+
+3. Lalu jalan kan local servernya `npm run dev`
+
+   ```cli
+   npm run dev
+   ```
+
+4. Untuk melakukan build repo menjadi static site, gunakan `npm run build`
+
+   ```cli
+   npm run build
+   ```
+
+Output build akan membuat folder dengan nama `dist` dan mengenerate static file yang dapat dideploy ke hosting berbasis server `apache` atau `nginx`.
+
+## Made with ❤️ by Muhamad Ramdani Hidayatullah
