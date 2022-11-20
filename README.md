@@ -1,29 +1,23 @@
-# kisi-kisi
+# Kisi Kisi Apps
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat untuk mempermudah guru-guru mendistribusikan kisi-kisi soal ujian melalui media digital, salah satunya website.
 
-## Recommended IDE Setup
+## Aplikasi dikembangkan menggunakan teknologi
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+1. Vue 3 (Main Front End)
+2. VueRouter (Router Management)
+3. TailwindCSS (CSS Utility)
+4. FLowbite (TailwindCSS Components Plugin)
+5. Axios (HTTP Request)
+6. Vue3 Easy Datatable (Datatables)
+7. Vite (Module Build Tool)
+8. Font Awesome 6 Free Edition (Icon)
+9. Semesta API build with Laravel 9 : [semesta-api](https://github.com/muhamadramdani275/semesta-api)
 
-## Customize configuration
+## Cara Penggunaan
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+1. Clone repository [https://github.com/muhamadramdani275/kisi-kisi.git](https://github.com/muhamadramdani275/kisi-kisi.git)
+   ```cli
+   git clone https://github.com/muhamadramdani275/kisi-kisi.git
+   ```
+2.
