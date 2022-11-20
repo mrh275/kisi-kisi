@@ -16,25 +16,31 @@ Aplikasi penyimpanan kisi-kisi soal ujian sekolah berbasis web. Aplikasi dibuat 
 
 ## Cara Penggunaan
 
-1. Clone repository [https://github.com/muhamadramdani275/kisi-kisi.git](https://github.com/muhamadramdani275/kisi-kisi.git)
+1. Buka `Terminal/CMD/Git Bash` lalu clone repository [https://github.com/muhamadramdani275/kisi-kisi.git](https://github.com/muhamadramdani275/kisi-kisi.git)
 
    ```cli
    git clone https://github.com/muhamadramdani275/kisi-kisi.git
    ```
 
-2. Lalu jalan kan `npm install`
+2. Masuk ke folder repo `kisi-kisi`. Bisa menggunakan explore bawaan dengan cara **Klik Kanan** folder repo `kisi-kisi` lalu `Open with Code` dan buka `terminal` pada `Visual Studio Code` atau menggunakan `CLI` dibawah ini
+
+   ```cli
+   cd kisi-kisi
+   ```
+
+3. Lalu jalan kan `npm install`
 
    ```cli
    npm install
    ```
 
-3. Lalu jalan kan local servernya `npm run dev`
+4. Lalu jalan kan local servernya `npm run dev`
 
    ```cli
    npm run dev
    ```
 
-4. Untuk melakukan build repo menjadi static site, gunakan `npm run build`
+5. Untuk melakukan build repo menjadi static site, gunakan `npm run build`
 
    ```cli
    npm run build
