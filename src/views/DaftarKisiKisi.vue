@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
 import { ref } from "vue";
+import { createToaster } from "@meforma/vue-toaster";
 
 const searchValue = ref();
 export default {
@@ -59,6 +60,32 @@ export default {
           console.log(error);
         });
     },
+    removeKisiKisi(param) {
+      const url = "/api/hapus-kisi-kisi";
+      const data = {
+        slugItem: param,
+      };
+      console.log(data.slugItem);
+
+      // axios
+      //   .get(url, data, {
+      //     headers: {
+      //       Accept: "application/json",
+      //     },
+      //   })
+      //   .then((response) => {
+      //     console.log(response.data);
+      //     // const toaster = createToaster({
+      //     //   position: "top-right",
+      //     //   duration: 3000,
+      //     //   dismissible: true,
+      //     // });
+      //     // toaster.success(response.data);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+    },
   },
 };
 </script>
@@ -83,7 +110,8 @@ export default {
       <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
         <template #item-unduh="item">
           <div class="unduh-wrapper">
-            <button @click="downloadKisiKisi(item.unduh)" class="btn btn-primary">Download</button>
+            <button @click="downloadKisiKisi(item.unduh)" class="mx-2 btn btn-primary">Download</button>
+            <button @click="removeKisiKisi(item.unduh)" class="mx-2">Hapus</button>
           </div>
         </template>
       </easy-data-table>
