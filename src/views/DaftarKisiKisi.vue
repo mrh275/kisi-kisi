@@ -4,6 +4,7 @@ import { ref } from "vue";
 import { createToaster } from "@meforma/vue-toaster";
 
 const searchValue = ref();
+
 export default {
   mounted: function () {
     axios
@@ -26,6 +27,7 @@ export default {
       ],
       items: [],
       searchValue: searchValue,
+      reloadTable: 0,
     };
   },
   methods: {
@@ -73,13 +75,14 @@ export default {
           },
         })
         .then((response) => {
-          // console.log(response.data);
+          console.log(response.data);
+          window.location.href = "/daftar-kisi-kisi";
           const toaster = createToaster({
             position: "top-right",
             duration: 3000,
             dismissible: true,
           });
-          toaster.success(response.data);
+          setTimeout(toaster.success(response.data), 3000).then(this.$router.go("/daftar-kisi-kisi"));
         })
         .catch((err) => {
           console.log(err);
