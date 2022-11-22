@@ -65,26 +65,25 @@ export default {
       const data = {
         slugItem: param,
       };
-      console.log(data.slugItem);
 
-      // axios
-      //   .get(url, data, {
-      //     headers: {
-      //       Accept: "application/json",
-      //     },
-      //   })
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     // const toaster = createToaster({
-      //     //   position: "top-right",
-      //     //   duration: 3000,
-      //     //   dismissible: true,
-      //     // });
-      //     // toaster.success(response.data);
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      axios
+        .post(url, data, {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+        .then((response) => {
+          // console.log(response.data);
+          const toaster = createToaster({
+            position: "top-right",
+            duration: 3000,
+            dismissible: true,
+          });
+          toaster.success(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };
