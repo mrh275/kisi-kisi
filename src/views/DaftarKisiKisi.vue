@@ -28,6 +28,7 @@ export default {
       items: [],
       searchValue: searchValue,
       flashMessage: sessionStorage.flashMessage ? sessionStorage.flashMessage : null,
+      token: sessionStorage.token ? sessionStorage.token : null,
     };
   },
   methods: {
@@ -137,7 +138,7 @@ export default {
         <template #item-unduh="item">
           <div class="unduh-wrapper">
             <button @click="downloadKisiKisi(item.unduh)" class="mx-2 btn btn-primary">Download</button>
-            <button @click="removeKisiKisi(item.unduh)" class="mx-2">Hapus</button>
+            <button @click="removeKisiKisi(item.unduh)" class="mx-2" v-if="token != null">Hapus</button>
           </div>
         </template>
       </easy-data-table>
