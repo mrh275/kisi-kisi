@@ -37,19 +37,24 @@ export default {
       } else {
         this.jurusanError = null;
       }
-      const regexp = /\s/g;
-      const slugMapel = this.mapel.replaceAll(regexp, "-");
-      const slugJurusan = this.jurusan.replaceAll(regexp, "-");
+      const whiteSpace = /\s/g;
+      const fSlash = /\//g;
+      let slugMapel = this.mapel.replaceAll(fSlash, "");
+      let slugkelas = this.kelas.replaceAll(fSlash, "");
+      let slugJurusan = this.jurusan.replaceAll(fSlash, "");
+      slugMapel = slugMapel.replaceAll(whiteSpace, "-");
+      slugkelas = slugkelas.replaceAll(whiteSpace, "-");
+      slugJurusan = slugJurusan.replaceAll(whiteSpace, "-");
       const data = {
         mapel: this.mapel,
         kelas: this.kelas + " " + this.jurusan,
         status: 1,
-        slug: slugMapel.toLowerCase() + "-" + this.kelas.toLowerCase() + "-" + slugJurusan.toLowerCase(),
+        slug: slugMapel.toLowerCase() + "-" + slugkelas.toLowerCase() + "-" + slugJurusan.toLowerCase(),
         fileMapel: [this.selectedFiles],
       };
       const url = "/api/upload-kisi-kisi";
       const token = sessionStorage.token;
-
+      console.log(data.slug);
       axios
         .post(url, data, {
           headers: {
