@@ -20,8 +20,9 @@ export default {
   data() {
     return {
       headers: [
-        { text: "Mata Pelajaran", value: "mapel" },
-        { text: "Kelas", value: "kelas" },
+        { text: "Mata Pelajaran", value: "mapel", sortable: true },
+        { text: "Kelas", value: "kelas", sortable: true },
+        { text: "Tipe Ujian", value: "tipe_ujian", sortable: true },
         { text: "Status", value: "status" },
         { text: "Unduh", value: "unduh" },
       ],
@@ -44,24 +45,30 @@ export default {
     downloadKisiKisi(item) {
       const url = "/api/download-kisi-kisi";
 
-      axios
-        .get(url, {
-          params: {
-            itemName: item,
-          },
-          responseType: "arraybuffer",
-        })
-        .then(function (response) {
-          console.log(response.data);
-          const blob = new Blob([response.data], { type: "application/pdf" });
-          const link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          link.download = item + ".pdf";
-          link.click();
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.$swal({
+        title: "Loading...",
+        timer: 1000,
+        didOpen: () => {
+          this.$swal.showLoading();
+          axios
+            .get(url, {
+              params: {
+                itemName: item,
+              },
+              responseType: "arraybuffer",
+            })
+            .then(function (response) {
+              const blob = new Blob([response.data], { type: "application/pdf" });
+              const link = document.createElement("a");
+              link.href = window.URL.createObjectURL(blob);
+              link.download = item + ".pdf";
+              link.click();
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+      }).then((dismiss) => {});
     },
     removeKisiKisi(param) {
       const url = "/api/hapus-kisi-kisi";
@@ -97,7 +104,7 @@ export default {
       <h2 class="text-xl font-semibold text-center kisi-title">
         Daftar Kisi-Kisi <br />
         Mata Pelajaran <br />
-        Penilaian Akhir Semester (PAS) Ganjil <br />
+        PTS dan US Semester Genap <br />
         Tahun Pelajaran 2022/2023
       </h2>
     </div>
@@ -134,7 +141,19 @@ export default {
         <label for="searchInput">Cari </label>
         <input type="text" id="searchInput" class="border rounded-md outline-none focus:ring focus:ring-[#0099ff] px-2 py-0.5 ml-1 transition-all ease-in-out duration-200" v-model="searchValue" />
       </div>
-      <easy-data-table class="table-mapel" buttons-pagination :headers="headers" :items="items" :rows-per-page="10" :rows-items="[10, 25, 50]" show-index :search-value="searchValue">
+      <easy-data-table
+        class="table-mapel"
+        table-class-name="customize-table"
+        header-text-direction="center"
+        body-text-direction="center"
+        buttons-pagination
+        :headers="headers"
+        :items="items"
+        :rows-per-page="10"
+        :rows-items="[10, 25, 50]"
+        show-index
+        :search-value="searchValue"
+      >
         <template #item-unduh="item">
           <div class="unduh-wrapper">
             <button @click="downloadKisiKisi(item.unduh)" class="mx-2 btn btn-primary">Download</button>
@@ -148,6 +167,15 @@ export default {
 
 <style>
 .table-mapel {
-  --easy-table-header-font-size: 0.8rem;
+  --easy-table-header-font-size: 1rem;
+  --easy-table-body-row-font-size: 0.9rem;
+  --easy-table-border: none;
+}
+
+@media (max-width: 768px) {
+  .vue3-easy-data-table__footer[data-v-0a021d30] {
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
 }
 </style>
