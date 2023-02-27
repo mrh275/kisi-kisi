@@ -13,7 +13,7 @@ import axios from "axios";
 import "flowbite";
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "API_URL";
+axios.defaults.baseURL = "https://api.sman1rawamerta.sch.id";
 library.add(faHome, faBook, faBars, faDownload, faSignIn, faUpload, faSignOut);
 const app = createApp(App);
 
