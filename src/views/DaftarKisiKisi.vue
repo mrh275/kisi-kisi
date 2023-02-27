@@ -36,14 +36,15 @@ export default {
     loopDataMapel(data) {
       data.forEach((item) => {
         if (item.status == 0) {
-          this.items.push({ mapel: item.mapel, kelas: item.kelas, status: "Belum Upload", unduh: item.slug });
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Belum Upload", unduh: item.slug + "-" + item.tipe_ujian });
         } else {
-          this.items.push({ mapel: item.mapel, kelas: item.kelas, status: "Terupload", unduh: item.slug });
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Terupload", unduh: item.slug + "-" + item.tipe_ujian });
         }
       });
     },
     downloadKisiKisi(item) {
       const url = "/api/download-kisi-kisi";
+      console.log(item);
 
       this.$swal({
         title: "Loading...",

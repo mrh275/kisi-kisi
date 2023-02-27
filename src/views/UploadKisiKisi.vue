@@ -12,10 +12,12 @@ export default {
       mapel: null,
       kelas: null,
       jurusan: null,
+      tipeUjian: null,
       selectedFiles: null,
       mapelError: null,
       kelasError: null,
       jurusanError: null,
+      tipeUjianError: null,
       fileErrors: null,
     };
   },
@@ -37,6 +39,11 @@ export default {
       } else {
         this.jurusanError = null;
       }
+      if (!this.tipeUjian) {
+        this.tipeUjianError = "Jenis Ujian wajib diisi!";
+      } else {
+        this.tipeUjianError = null;
+      }
       const whiteSpace = /\s/g;
       const fSlash = /\//g;
       let slugMapel = this.mapel.replaceAll(fSlash, "");
@@ -48,6 +55,7 @@ export default {
       const data = {
         mapel: this.mapel,
         kelas: this.kelas + " " + this.jurusan,
+        tipe_ujian: this.tipeUjian,
         status: 1,
         slug: slugMapel.toLowerCase() + "-" + slugkelas.toLowerCase() + "-" + slugJurusan.toLowerCase(),
         fileMapel: [this.selectedFiles],
@@ -55,30 +63,38 @@ export default {
       const url = "/api/upload-kisi-kisi";
       const token = sessionStorage.token;
       console.log(data.slug);
-      axios
-        .post(url, data, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          const toaster = createToaster({
-            position: "top-right",
-            duration: 3000,
-            dismissible: true,
-          });
-          toaster.success(response.data);
-          this.mapel = "";
-          this.kelas = "";
-          this.jurusan = "";
-          this.selectedFiles = null;
-          this.$refs.fileupload.value = null;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.$swal({
+        title: "Sedang mengunggah...",
+        timer: 2000,
+        didOpen: () => {
+          this.$swal.showLoading();
+          axios
+            .post(url, data, {
+              headers: {
+                "Content-Type": "multipart/form-data",
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((response) => {
+              const toaster = createToaster({
+                position: "top-right",
+                duration: 3000,
+                dismissible: true,
+              });
+              toaster.success(response.data);
+              this.mapel = "";
+              this.kelas = "";
+              this.jurusan = "";
+              this.tipeUjian = "";
+              this.selectedFiles = null;
+              this.$refs.fileupload.value = null;
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        },
+      });
     },
     onSelectedFile(event) {
       if (event.target.files[0]["type"] === "application/pdf") {
@@ -110,12 +126,31 @@ export default {
       </div>
       <div class="mb-6">
         <label for="kelas" class="block mb-2 text-sm font-medium text-white">Kelas</label>
-        <input type="text" id="kelas" v-model="kelas" name="kelas" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white" />
+        <select id="kelas" v-model="kelas" name="kelas" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
+          <option value="">Pilih :</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
         <span class="text-red-500">{{ kelasError }}</span>
       </div>
       <div class="mb-6">
+        <label for="tipeUjian" class="block mb-2 text-sm font-medium text-white">Jenis Ujian</label>
+        <select id="tipeUjian" v-model="tipeUjian" name="tipeUjian" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
+          <option value="">Pilih :</option>
+          <option value="PTS">PTS</option>
+          <option value="US">US</option>
+        </select>
+        <span class="text-red-500">{{ tipeUjianError }}</span>
+      </div>
+      <div class="mb-6">
         <label for="jurusan" class="block mb-2 text-sm font-medium text-white">Jurusan</label>
-        <input type="text" id="jurusan" v-model="jurusan" name="jurusan" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white" />
+        <select id="jurusan" v-model="jurusan" name="jurusan" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
+          <option value="">Pilih :</option>
+          <option value="IPA">IPA</option>
+          <option value="IPS">IPS</option>
+          <option value="Umum">Umum</option>
+        </select>
         <span class="text-red-500">{{ jurusanError }}</span>
       </div>
       <div class="mb-6">
