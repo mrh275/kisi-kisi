@@ -38,11 +38,11 @@ export default {
         if (item.status == 0) {
           this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Belum Upload", unduh: item.slug + "-" + item.tipe_ujian });
         } else {
-          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Terupload", unduh: item.slug + "-" + item.tipe_ujian });
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Terupload", unduh: item.slug });
         }
       });
     },
-    downloadKisiKisi(item) {
+    downloadKisiKisi(item, tipe_ujian) {
       const url = "/api/download-kisi-kisi";
       console.log(item);
 
@@ -55,6 +55,7 @@ export default {
             .get(url, {
               params: {
                 itemName: item,
+                tipeUjian: tipe_ujian,
               },
               responseType: "arraybuffer",
             })
@@ -71,16 +72,19 @@ export default {
         },
       }).then((dismiss) => {});
     },
-    removeKisiKisi(param) {
+    removeKisiKisi(param, tipe_ujian) {
       const url = "/api/hapus-kisi-kisi";
+      const token = sessionStorage.token;
       const data = {
         slugItem: param,
+        tipeUjian: tipe_ujian,
       };
 
       axios
         .post(url, data, {
           headers: {
             Accept: "application/json",
+            Authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {
@@ -157,8 +161,8 @@ export default {
       >
         <template #item-unduh="item">
           <div class="unduh-wrapper">
-            <button @click="downloadKisiKisi(item.unduh)" class="mx-2 btn btn-primary">Download</button>
-            <button @click="removeKisiKisi(item.unduh)" class="mx-2" v-if="token != null">Hapus</button>
+            <button @click="downloadKisiKisi(item.unduh, item.tipe_ujian)" class="mx-2 btn btn-primary">Download</button>
+            <button @click="removeKisiKisi(item.unduh, item.tipe_ujian)" class="mx-2" v-if="token != null">Hapus</button>
           </div>
         </template>
       </easy-data-table>
