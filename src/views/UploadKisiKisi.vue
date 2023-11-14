@@ -52,17 +52,19 @@ export default {
       slugMapel = slugMapel.replaceAll(whiteSpace, "-");
       slugkelas = slugkelas.replaceAll(whiteSpace, "-");
       slugJurusan = slugJurusan.replaceAll(whiteSpace, "-");
+      const slugTipeUjian = this.tipeUjian;
+      const fileSelected = [this.selectedFiles];
       const data = {
         mapel: this.mapel,
         kelas: this.kelas + " " + this.jurusan,
         tipe_ujian: this.tipeUjian,
         status: 1,
-        slug: slugMapel.toLowerCase() + "-" + slugkelas.toLowerCase() + "-" + slugJurusan.toLowerCase(),
-        fileMapel: [this.selectedFiles],
+        slug: slugMapel.toLowerCase() + "-" + slugkelas.toLowerCase() + "-" + slugJurusan.toLowerCase() + "-" + slugTipeUjian.toLowerCase(),
+        fileMapel: fileSelected[0],
       };
       const url = "/api/upload-kisi-kisi";
       const token = sessionStorage.token;
-      console.log(data.slug);
+      console.log(data.fileMapel);
       this.$swal({
         title: "Sedang mengunggah...",
         timer: 2000,
@@ -77,12 +79,13 @@ export default {
               },
             })
             .then((response) => {
+              console.log(response);
               const toaster = createToaster({
                 position: "top-right",
                 duration: 3000,
                 dismissible: true,
               });
-              toaster.success(response.data);
+              toaster.success(response.data.message);
               this.mapel = "";
               this.kelas = "";
               this.jurusan = "";
@@ -138,7 +141,9 @@ export default {
         <label for="tipeUjian" class="block mb-2 text-sm font-medium text-white">Jenis Ujian</label>
         <select id="tipeUjian" v-model="tipeUjian" name="tipeUjian" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
           <option value="">Pilih :</option>
+          <option value="PAS">PAS</option>
           <option value="PTS">PTS</option>
+          <option value="PAT">PAT</option>
           <option value="US">US</option>
         </select>
         <span class="text-red-500">{{ tipeUjianError }}</span>
