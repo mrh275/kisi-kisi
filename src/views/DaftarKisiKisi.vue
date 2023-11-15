@@ -36,7 +36,7 @@ export default {
     loopDataMapel(data) {
       data.forEach((item) => {
         if (item.status == 0) {
-          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Belum Upload", unduh: item.slug + "-" + item.tipe_ujian });
+          this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Belum Upload", unduh: item.slug });
         } else {
           this.items.push({ mapel: item.mapel, kelas: item.kelas, tipe_ujian: item.tipe_ujian, status: "Terupload", unduh: item.slug });
         }
@@ -73,27 +73,36 @@ export default {
       }).then((dismiss) => {});
     },
     removeKisiKisi(param, tipe_ujian) {
-      const url = "/api/hapus-kisi-kisi";
-      const token = sessionStorage.token;
-      const data = {
-        slugItem: param,
-        tipeUjian: tipe_ujian,
-      };
+      this.$swal({
+        title: "Apakah anda yakin?",
+        text: "Kisi-kisi yang dihapus tidak dapat dikembalikan!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Ya, hapus!",
+        cancelButtonText: "Tidak, batalkan!",
+      }).then((result) => {
+        const url = "/api/hapus-kisi-kisi";
+        const token = sessionStorage.token;
+        const data = {
+          slugItem: param,
+          tipeUjian: tipe_ujian,
+        };
 
-      axios
-        .post(url, data, {
-          headers: {
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          sessionStorage.setItem("flashMessage", response.data);
-          window.location.href = "/daftar-kisi-kisi";
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        axios
+          .post(url, data, {
+            headers: {
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((response) => {
+            sessionStorage.setItem("flashMessage", response.data);
+            window.location.href = "/daftar-kisi-kisi";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
     },
     removeAlert() {
       sessionStorage.removeItem("flashMessage");
