@@ -64,7 +64,6 @@ export default {
       };
       const url = "/api/upload-kisi-kisi";
       const token = sessionStorage.token;
-      console.log(data.fileMapel);
       this.$swal({
         title: "Sedang mengunggah...",
         timer: 2000,
@@ -79,7 +78,6 @@ export default {
               },
             })
             .then((response) => {
-              console.log(response);
               const toaster = createToaster({
                 position: "top-right",
                 duration: 3000,
