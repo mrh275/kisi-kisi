@@ -118,7 +118,7 @@ export default {
       <h2 class="text-xl font-semibold text-center kisi-title">
         Daftar Kisi-Kisi <br />
         Mata Pelajaran <br />
-        PAS Semester Ganjil <br />
+        PSAJ Semester Genap <br />
         Tahun Pelajaran 2023/2024
       </h2>
     </div>
