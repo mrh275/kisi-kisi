@@ -1,3 +1,7 @@
+<IfModule mod_negotiation.c>
+  Options -MultiViews
+</IfModule>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -5,4 +9,10 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
+  
+  #Force HTTPS
+  # RewriteCond %{HTTPS} off 
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  php_value post_max_size 128M
 </IfModule>
