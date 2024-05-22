@@ -24,7 +24,7 @@ export default {
         Mata Pelajaran
       </h3>
       <p class="text-justify xl:text-center xl:text-xl list-kisi-desc">Untuk melihat daftar kisi-kisi mata pelajaran apa saja yang sudah tersedia, silahkan klik tombol dibawah ini!</p>
-      <a href="/daftar-kisi-kisi" class="inline-block my-6 bg-[#0099ff] hover:bg-[#0077ff] rounded-lg px-4 py-3 list-kisi-cta btn btn-primary">Daftar Kisi-kisi</a>
+      <router-link to="/daftar-kisi-kisi" class="inline-block my-6 bg-[#0099ff] hover:bg-[#0077ff] rounded-lg px-4 py-3 list-kisi-cta btn btn-primary">Daftar Kisi-kisi</router-link>
     </div>
   </main>
 </template>
