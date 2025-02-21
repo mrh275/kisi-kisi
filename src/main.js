@@ -15,7 +15,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = "https://sman1rawamerta.my.id";
+axios.defaults.baseURL = "https://api.sman1rawamerta.sch.id";
 library.add(faHome, faBook, faBars, faDownload, faSignIn, faUpload, faSignOut);
 const app = createApp(App);
 

@@ -142,7 +142,7 @@ export default {
           <option value="PAS">PAS</option>
           <option value="PTS">PTS</option>
           <option value="PAT">PAT</option>
-          <option value="US">US</option>
+          <option value="PSAJ">PSAJ</option>
         </select>
         <span class="text-red-500">{{ tipeUjianError }}</span>
       </div>

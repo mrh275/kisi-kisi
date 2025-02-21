@@ -118,8 +118,8 @@ export default {
       <h2 class="text-xl font-semibold text-center kisi-title">
         Daftar Kisi-Kisi <br />
         Mata Pelajaran <br />
-        PSAJ Semester Genap <br />
-        Tahun Pelajaran 2023/2024
+        Penilaian Sumatif Akhir Jenjang <br />
+        Tahun Pelajaran 2024/2025
       </h2>
     </div>
 
