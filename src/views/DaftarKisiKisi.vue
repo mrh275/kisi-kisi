@@ -118,7 +118,7 @@ export default {
       <h2 class="text-xl font-semibold text-center kisi-title">
         Daftar Kisi-Kisi <br />
         Mata Pelajaran <br />
-        Penilaian Sumatif Akhir Jenjang <br />
+        Penilaian Sumatif Akhir Tahun <br />
         Tahun Pelajaran 2024/2025
       </h2>
     </div>
