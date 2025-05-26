@@ -139,9 +139,8 @@ export default {
         <label for="tipeUjian" class="block mb-2 text-sm font-medium text-white">Jenis Ujian</label>
         <select id="tipeUjian" v-model="tipeUjian" name="tipeUjian" class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white">
           <option value="">Pilih :</option>
-          <option value="PAS">PAS</option>
-          <option value="PTS">PTS</option>
-          <option value="PAT">PAT</option>
+          <option value="PSAS">PSAS</option>
+          <option value="PSAT">PSAT</option>
           <option value="PSAJ">PSAJ</option>
         </select>
         <span class="text-red-500">{{ tipeUjianError }}</span>
